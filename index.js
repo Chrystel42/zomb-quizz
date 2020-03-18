@@ -24,6 +24,7 @@ const mongoUrl = process.env.MONGODB_URI
   ? process.env.MONGODB_URI
   : "mongodb://localhost:27017";
 
+  const port=process.env.PORT ||3000;
 // Nom de la base de données
 const dbName = "quizzombie";
 // Création d'un client pour la base de données
@@ -355,8 +356,8 @@ function timeout(ms) {
 reload(app)
   .then(function() {
     // On lance l'écoute sur le port 3000
-    http.listen(80, function() {
-      console.log("listening on *:80");
+    http.listen(port, function() {
+      console.log(`listening on *:${port}`);
     });
   })
   .catch(function(err) {
