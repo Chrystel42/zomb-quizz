@@ -1,6 +1,5 @@
 $(function() {
   const socket = io();
-  socket.emit('login',$('#pseudonyme').val, $('#pass').val)
 
   socket.on("waiting", () => {
     $(".voirScore").hide();
