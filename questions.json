@@ -1,0 +1,322 @@
+[
+  {
+    "question": "En quelle année est sorti le premier épisode de 'The Walking Dead' ?",
+    "possibleAnswers": ["2010", "2007", "2014", "1980"],
+    "answer": 0
+  },
+
+  {
+    "question": "Comment tuer un Zombie ?",
+    "possibleAnswers": [
+      "En lui transperçant le coeur",
+      "En l'aspergeant d'eau bénite",
+      "En lui faisant écouter du Jul",
+      "En lui coupant la tête"
+    ],
+    "answer": 3
+  },
+
+  {
+    "question": "Quel était le métier de Rick (TWD) avant l'apocalyse Zombie ?",
+    "possibleAnswers": ["Dentiste", "Policier", "Zoologiste", "Danseur étoile"],
+    "answer": 1
+  },
+
+  {
+    "question": "En quelle année est sorti le single 'Thriller' de Michael Jackson ?",
+    "possibleAnswers": ["1990", "1982", "1987", "1994"],
+    "answer": 1
+  },
+
+  {
+    "question": "Dans 'Resident Evil', quel virus est libéré par Umbrella Corporation ?",
+    "possibleAnswers": ["Le virus-S", "Le virus-X", "Le virus-T", "Virus-H"],
+    "answer": 2
+  },
+
+  {
+    "question": "Comment s'appele le héros du film '28 jours plus tard' ?",
+    "possibleAnswers": ["Jim", "Jax", "Joe", "John"],
+    "answer": 0
+  },
+
+  {
+    "question": "Dans quel jeu video trouve-t-on des cochons Zombies ?",
+    "possibleAnswers": ["Outlast", "Resident Evil 4", "LOL", "Minecraft"],
+    "answer": 3
+  },
+
+  {
+    "question": "Dans TWD, comment s'appelle le leader des Chuchoteurs ?",
+    "possibleAnswers": ["Omega", "Alpha", "Delta", "Beta"],
+    "answer": 1
+  },
+
+  {
+    "question": "Qui est le réalisateur de 'La Nuit des Morts Vivants' ?",
+    "possibleAnswers": [
+      "George A. Romero",
+      "Tom Savini",
+      "Stephen King",
+      "Wes Craven"
+    ],
+    "answer": 0
+  },
+
+  {
+    "question": "De quelle série est dérivé 'Fear The Walking Dead' ?",
+    "possibleAnswers": [
+      "The Walking Dead",
+      "I-Zombie",
+      "Santa Clarita Diet",
+      "Wayward Pines"
+    ],
+    "answer": 0
+  },
+
+  {
+    "question": "De quelle origine est le film 'Shawn of The Dead' ?",
+    "possibleAnswers": ["Américain", "Canadien", "Australien", "Britanique"],
+    "answer": 3
+  },
+
+  {
+    "question": "Quel acteur incarne Daryl dans TWD ?",
+    "possibleAnswers": [
+      "Norman Reedus",
+      "Andrew Lincoln",
+      "Nick Frost",
+      "Matt Damon"
+    ],
+    "answer": 0
+  },
+
+  {
+    "question": "Quel personnage de TWD s'est fait tué par Negan devant toute sa bande ?",
+    "possibleAnswers": ["Glenn", "Jesus", "Rick", "Abraham"],
+    "answer": 0
+  },
+
+  {
+    "question": "Quel groupe a sorti une chanson appellée 'ZOMBIES' ?",
+    "possibleAnswers": [
+      "Alanis Moricette",
+      "Avril Lavigne",
+      "The Corrs",
+      "The Cranberries"
+    ],
+    "answer": 3
+  },
+
+  {
+    "question": "Dans quel film les zombies sont des soldats nazis ?",
+    "possibleAnswers": [
+      "La Horde",
+      "28 jours plus tard",
+      "Dead snow",
+      "The dead don't die"
+    ],
+    "answer": 2
+  },
+
+  {
+    "question": "Dans quel film un homme décapite des zombies avec un tondeuse à gazon ?",
+    "possibleAnswers": [
+      "Shaw of the Dead",
+      "Evil Dead 3",
+      "Braindead",
+      "Zombie Land"
+    ],
+    "answer": 2
+  },
+
+  {
+    "question": "Dans 'Le retour des mots vivant', que crient les zombies ?",
+    "possibleAnswers": [
+      "J'ai faim !!!",
+      "Cerveau !!!",
+      "Manger !!!",
+      "Viande !!!"
+    ],
+    "answer": 1
+  },
+
+  {
+    "question": "En cas d'invasion Zombie, quelle nourriture faut-il privilégier ?",
+    "possibleAnswers": [
+      "Des boîtes de conserve",
+      "Des fruits et légumes",
+      "Des bonbons",
+      "De la viande"
+    ],
+    "answer": 0
+  },
+
+  {
+    "question": "Dans 'Resident Evil', comment s'appelle la héroïne ?",
+    "possibleAnswers": ["Rebecca", "June", "Vanessa", "Alice"],
+    "answer": 3
+  },
+
+  {
+    "question": "Dans 'Zombie Land', quel rôle interprète Abigail Breslin ?",
+    "possibleAnswers": ["Colombus", "Little Rock", "Tallahassee", "Wichita"],
+    "answer": 1
+  },
+
+  {
+    "question": "Quel film parle d'une romance entre un zombie et une humaine ?",
+    "possibleAnswers": [
+      "Shaw of the Dead",
+      "Warm Bodies",
+      "Zombie Land",
+      "Evil Dead"
+    ],
+    "answer": 1
+  },
+
+  {
+    "question": "Dand Je suis une Légende, comment meurt la femme du héro ?",
+    "possibleAnswers": [
+      "Tombée d'un immeuble",
+      "Crash d'un avion",
+      "Tuée par un zombie",
+      "Crash d'un hélico"
+    ],
+    "answer": 3
+  },
+
+  {
+    "question": "Les zombies sont des ...",
+    "possibleAnswers": [
+      "Des vampires",
+      "Des revenants",
+      "Des fantômes",
+      "Des ados"
+    ],
+    "answer": 1
+  },
+
+  {
+    "question": "Quelle est l'origine des Zombies ?",
+    "possibleAnswers": ["Tahiti", "Madagascar", "Haiti", "Fidji"],
+    "answer": 2
+  },
+
+  {
+    "question": "Comment écrit-on 'Zombie' au pluriel ?",
+    "possibleAnswers": ["Zombies", "Zomby", "Zombis", "Zombee"],
+    "answer": 0
+  },
+
+  {
+    "question": "De quelle année date le film 'Zombi Holocaust' ?",
+    "possibleAnswers": ["1983", "1987", "1980", "1991"],
+    "answer": 2
+  },
+
+  {
+    "question": "Comment sont appelés les zombies de '28 jours plus tard' ?",
+    "possibleAnswers": [
+      "Les zombies",
+      "Les mots-vivants",
+      "Les marcheurs",
+      "Les infectés"
+    ],
+    "answer": 3
+  },
+
+  {
+    "question": "Que signifie le 'A' de George A. Romero ?",
+    "possibleAnswers": ["Antonio", "Alfred", "Arthur", "Andrew"],
+    "answer": 3
+  },
+
+  {
+    "question": "Dans 'Fear The Walking Dead', comment sont désignés les Zombies ?",
+    "possibleAnswers": [
+      "les rôdeurs",
+      "Les marcheurs",
+      "Les zombies",
+      "Les mots vivants"
+    ],
+    "answer": 0
+  },
+
+  {
+    "question": "En quelle année est sorti le film 'Braindead' ?",
+    "possibleAnswers": [
+      "1987",
+      "1995",
+      "1992",
+      "2001"
+    ],
+    "answer": 2
+  },
+
+  {
+    "question": "Dans quelle ville se déroule le film '28 jours plus tard' ?",
+    "possibleAnswers": [
+      "Berlin",
+      "Paris",
+      "Moscou",
+      "Londres"
+    ],
+    "answer": 3
+  },
+
+  {
+    "question": "Dans 'Shaun of the Dead', comment s'appelle le bar où Shaun et ses amis se réfugient ?",
+    "possibleAnswers": [
+      "Red Lion",
+      "Winschester",
+      "The Word's End",
+      "The Dev's"
+    ],
+    "answer": 1
+  },
+
+  {
+    "question": "Dans 'Je suis une légende', que craignent les créatures ?",
+    "possibleAnswers": [
+      "Le soleil",
+      "La pluie",
+      "les chiens",
+      "Billie Elish"
+    ],
+    "answer": 0
+  },
+
+  {
+    "question": "Comment s'appelle le personnage interprété par Jesse Eisenberg dans 'Zombieland' ?",
+    "possibleAnswers": [
+      "Columbus",
+      "Little Rock",
+      "Tallahassee",
+      "Wichita"
+    ],
+    "answer": 0
+  },
+
+  {
+    "question": "Dans quel film un personnage remplace sa jambe par une mitraillette ?",
+    "possibleAnswers": [
+      "Shaun of the Dead",
+      "Planète terreur",
+      "Zombie Land",
+      "Braindead"
+    ],
+    "answer": 1
+  },
+
+  {
+    "question": "Dans quel 'Resident Evil' Nemesis apparaît pour la première fois ?",
+    "possibleAnswers": [
+      "Extinction",
+      "Apocalypse",
+      "Afterlife",
+      "Retribution"
+    ],
+    "answer": 1
+  }
+]

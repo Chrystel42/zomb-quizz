@@ -1,0 +1,433 @@
+/* * {
+    margin:0;
+    padding:0;
+} */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  /* background-color: black; */
+  background-image: url("../images/background-jeu.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#title {
+  text-align: center;
+  width: 100%;
+  height: 10%;
+  font-family: "Modak", cursive;
+  color: whitesmoke;
+  font-size: 116px;
+  text-shadow: 3px 3px 3px black;
+  padding: 0;
+  border-radius: 15px;
+}
+
+#resultat {
+  width: 100%;
+}
+#regleDuJeu span {
+  font-size: 24px;
+  color: rgb(72, 197, 72);
+}
+
+#resultat-text,
+#waiting {
+  text-align: center;
+  width: 100%;
+  height: 10%;
+  font-family: "Modak", cursive;
+  color: rgb(197, 20, 20);
+  font-size: 60px;
+  text-shadow: 3px 3px 3px black;
+  padding: 0;
+  border-radius: 15px;
+}
+
+#enCours {
+  display: none;
+  font-family: "Modak", cursive;
+  color: green;
+  background: black;
+  margin: auto;
+  border-radius: 8px;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-right: 180px;
+  margin-left: 180px;
+  font-size: 34px;
+  margin-top: 50px;
+}
+
+#gameContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  top: 18%;
+  left: 18%;
+}
+
+#game-area {
+  background-image: url("../images/fond-jeu.jpg");
+  background-size: cover;
+  /* display: none; */
+  border: 2px solid black;
+  height: 474px;
+  width: 60%;
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.questions {
+  position: relative;
+  height: 100px;
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 3%;
+  background: #2a700d;
+  border-radius: 27px;
+  box-shadow: 10px 5px 5px black;
+}
+
+.questions span {
+  position: absolute;
+  font-family: "Bree Serif", serif;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  color: whitesmoke;
+  transform: translate(-50%, -50%);
+}
+
+#reponses {
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 215px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.reponse {
+  position: relative;
+  height: 80px;
+  width: 300px;
+  background-color: greenyellow;
+  border-radius: 8px;
+  box-shadow: 7px 7px 12px -4px rgba(0, 0, 0, 0.75);
+  border: 3px solid green;
+}
+
+.reponse span {
+  position: absolute;
+  font-family: "Bree Serif", serif;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  transform: translate(-50%, -50%);
+}
+
+.minuteur {
+  position: relative;
+  margin-top: 29px;
+  width: 100%;
+}
+
+.minuteur span {
+  position: absolute;
+  font-family: "Bree Serif", serif;
+  top: 50%;
+  left: 50%;
+  font-size: 45px;
+  font-weight: bold;
+  color: black;
+  transform: translate(-50%, -50%);
+  text-decoration: red;
+}
+
+.vrai {
+  position: absolute;
+  left: -8000px;
+  height: 55px;
+  width: 155px;
+  background: rgb(21, 255, 0);
+  margin: auto;
+  border-radius: 8px;
+}
+
+/* Joueur 1 */
+#player-one {
+  display: flex;
+  /* display:none; */
+  flex-direction: column;
+  align-items: center;
+  font-family: "Paytone One";
+  width: 160px;
+  height: 300px;
+  position: absolute;
+  left: 4%;
+}
+
+#h2Joueur1 {
+  display: flex;
+  color: whitesmoke;
+  margin-top: 7%;
+  margin-bottom: 7%;
+}
+
+/* Joueur 2 */
+#player-two {
+  display: flex;
+  /* display:none; */
+  flex-direction: column;
+  align-items: center;
+  font-family: "Paytone One";
+  width: 160px;
+  height: 300px;
+  position: absolute;
+  right: 4%;
+}
+
+#h2Joueur2 {
+  display: flex;
+  color: whitesmoke;
+  margin-top: 7%;
+  margin-bottom: 7%;
+}
+#scoreNumb1,
+#winLooseNumb1,
+#totalScoreNumb1,
+#scoreNumb2,
+#winLooseNumb2,
+#totalScoreNumb2 {
+  color: whitesmoke;
+  font-size: 29px;
+}
+
+/* Pseudo */
+#nickname, #pseudo {
+  display: flex;
+  position: absolute;
+  margin: auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 143px;
+  align-items: center;
+  position: absolute;
+  top: 51%;
+  color: whitesmoke;
+}
+
+#enterName,
+#mdp {
+  font-family: "Bree Serif", serif;
+  font-size: 28px;
+  color: #ded8d7;
+  text-shadow: 3px 3px 3px black;
+}
+
+#pseudonyme,
+#pass {
+  height: 40px;
+  width: 265px;
+  background-color: #3b8610;
+  border-radius: 29px;
+  border: 1px solid rgba(0, 0, 0, 1);
+  opacity: 0.7;
+  outline: 0;
+  font-size: 27px;
+  text-align: center;
+}
+
+#pass {
+  background-color: #3b8610;
+  font-size: 18px;
+}
+
+#motDePass {
+  display: inline-block;
+}
+
+#mdp {
+  text-align: center;
+}
+
+input {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#retry-btn {
+  display: block;
+  margin: auto;
+  text-align: center;
+  color: #2b810e;
+  padding: 10px;
+  border-radius: 24px;
+  width: 300px;
+  margin-top: 30px;
+  font-size: 20px;
+  font-family: "Bree Serif", serif;
+  font-weight: bold;
+  border: 2px solid #3b8610;
+  box-shadow: #32cb00 1px 0 10px;
+  outline: 0;
+  background-color: #ff0000;
+}
+
+#boutonPlay {
+  color: #2b810e;
+  padding: 10px;
+  border-radius: 24px;
+  width: 131px;
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: "Bree Serif", serif;
+  font-weight: bold;
+  border: 2px solid #3b8610;
+  box-shadow: #32cb00 1px 0 10px;
+  outline: 0;
+  background-color: #ff0000;
+}
+
+#validez {
+  color: #2b810e;
+  padding: 10px;
+  border-radius: 24px;
+  width: 131px;
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: "Bree Serif", serif;
+  font-weight: bold;
+  border: 2px solid #3b8610;
+  box-shadow: #32cb00 1px 0 10px;
+  outline: 0;
+  background-color: #ff0000;
+}
+
+#loginMessage {
+  color: yelloow;
+  color: red;
+  font-size: 25px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-family: "Bree Serif", serif;
+  text-shadow: 3px 3px 3px #32cb00;
+}
+
+#rules {
+  /* display:none; */
+  text-align: center;
+  width: 100%;
+}
+
+#regles {
+  font-family: "Bree Serif", serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: red;
+  text-shadow: 0 0 0.2em #32cb00, 0 0 0.2em #32cb00, 0 0 0.2em #32cb00;
+  margin-top: 2%;
+}
+
+#regleDuJeu {
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  background: black;
+  opacity: 0.8;
+  height: 216px;
+  line-height: 1.5;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+#regleDuJeu p {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.lesScores {
+  width: 100%;
+  margin-right: 30px;
+}
+
+#monScore p {
+  padding-top: 3%;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  font-family: "Bree Serif", serif;
+  text-shadow: 0 0 0.2em #32cb00, 0 0 0.2em #32cb00, 0 0 0.2em #32cb00;
+}
+
+.voirScore button {
+  display: block;
+  margin-left: 41%;
+  background: white;
+  color: green;
+  border-radius: 8px;
+  padding: 6px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#autreScores {
+  margin-top: 1%;
+  overflow: auto;
+}
+
+#autreScores p {
+  color: white;
+  font-size: 20px;
+  font-family: "Bree Serif", serif;
+  margin-left: 50px;
+  text-shadow: 0 0 0.2em #cb0000, 0 0 0.2em #cb0000, 0 0 0.2em #cb0000;
+  padding-top: 7px;
+}
+
+#performances {
+  width: 50%;
+  margin-right: 25%;
+  margin-left: 25%;
+  background-color: black;
+  height: 512px;
+  border-radius: 8px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+table {
+  line-height: 28px;
+  padding-left: 20px;
+  text-align: center;
+}
+
+thead {
+  padding-bottom: 10px;
+  color: green;
+  font-size: 18px;
+}
+
+th {
+  padding: 10px 30px;
+}
