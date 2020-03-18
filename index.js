@@ -65,6 +65,8 @@ const initDB = async () => {
 };
 initDB();
 
+
+
 // Fonction de récupération d'un joueur depuis la base de données
 // S'il n'existe pas, on l'insère dans la base avec des infos par défaut, son login et son mot de passe hashé
 const getPlayerFromDB = async (login, pass) => {
