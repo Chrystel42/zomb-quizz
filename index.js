@@ -30,6 +30,8 @@ let client = new MongoClient(mongoUrl, {
   useUnifiedTopology: true
 });
 
+await client.connect();
+
 const manchesGagnantes = 10;
 let players = {};
 let sockets = {};
@@ -37,16 +39,15 @@ let questions = [];
 
 // Suppression de la base de données lors du chagement de l'application
 const drop = async () => {
-  const connection = await client.connect();
-  const db = connection.db(dbName);
+  const db = client.db(dbName);
   await db.dropDatabase();
+  console.log("Database dropped");
 };
 
-//drop();
+drop();
 
 // Initialisation de la base de données avec les questions à partir d'un fichier json
 const initDB = async () => {
-  client = await client.connect();
   const db = client.db(dbName);
   const questionCollection = db.collection("questions");
   // S'il n'y a de question présentes dans la base de données
@@ -60,6 +61,7 @@ const initDB = async () => {
   }
   // On récupère la liste des questions à partir de la base de données
   questions = await questionCollection.find().toArray();
+  console.log("questions loaded fron database")
 };
 initDB();
 
