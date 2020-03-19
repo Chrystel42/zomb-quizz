@@ -15,22 +15,20 @@ app.use(express.static("client"));
 app.use("/jquery", express.static(__dirname + "/node_modules/jquery/dist/"));
 
 // Route pricipale, affiche la page pricipale
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
 // Définition de l'adresse de la base de données
-const mongoUrl = "mongodb+srv://Chrystel42:"+ encodeURI("Visha@182kb!87") + "@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority";
+const mongoUrl = "mongodb+srv://Chrystel42:" + encodeURI("Visha@182kb!87") + "@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority";
 console.log(mongoUrl);
-const port=process.env.PORT ||3000;
+const port = process.env.PORT || 3000;
 // Nom de la base de données
 const dbName = "quizzombie";
 // Création d'un client pour la base de données
 let client = new MongoClient(mongoUrl, {
   useUnifiedTopology: true
 });
-
-await client.connect();
 
 const manchesGagnantes = 10;
 let players = {};
@@ -39,29 +37,43 @@ let questions = [];
 
 // Suppression de la base de données lors du chagement de l'application
 const drop = async () => {
-  const db = client.db(dbName);
-  await db.dropDatabase();
-  console.log("Database dropped");
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    await db.dropDatabase();
+    console.log("Database dropped");
+  } catch (e) {
+    console.error(e);
+  } finally {
+    await client.close();
+  }
 };
 
 drop();
 
 // Initialisation de la base de données avec les questions à partir d'un fichier json
 const initDB = async () => {
-  const db = client.db(dbName);
-  const questionCollection = db.collection("questions");
-  // S'il n'y a de question présentes dans la base de données
-  if ((await questionCollection.countDocuments()) === 0) {
-    // On récupère les questions à partir du fichier json
-    let rawdata = fs.readFileSync("questions.json");
-    // On converit le buffer créé à partir de la lecture du fichier json en objet Json
-    let questions = JSON.parse(rawdata);
-    // On insère la liste des questions en une seule fois.
-    await questionCollection.insertMany(questions);
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const questionCollection = db.collection("questions");
+    // S'il n'y a de question présentes dans la base de données
+    if ((await questionCollection.countDocuments()) === 0) {
+      // On récupère les questions à partir du fichier json
+      let rawdata = fs.readFileSync("questions.json");
+      // On converit le buffer créé à partir de la lecture du fichier json en objet Json
+      let questions = JSON.parse(rawdata);
+      // On insère la liste des questions en une seule fois.
+      await questionCollection.insertMany(questions);
+    }
+    // On récupère la liste des questions à partir de la base de données
+    questions = await questionCollection.find().toArray();
+    console.log("questions loaded fron database")
+  } catch (e) {
+    console.error(e);
+  } finally {
+    await client.close();
   }
-  // On récupère la liste des questions à partir de la base de données
-  questions = await questionCollection.find().toArray();
-  console.log("questions loaded fron database")
 };
 initDB();
 
@@ -70,50 +82,75 @@ initDB();
 // Fonction de récupération d'un joueur depuis la base de données
 // S'il n'existe pas, on l'insère dans la base avec des infos par défaut, son login et son mot de passe hashé
 const getPlayerFromDB = async (login, pass) => {
-  const db = client.db(dbName);
-  const playerCollection = db.collection("players");
-  let user = await playerCollection.findOne({ login: login });
-  if (user === null) {
-    // Génération d'une clé de cryptage
-    var salt = await bcrypt.genSalt(2);
-    // Génération du hash du mot de passe
-    var hashedPassword = await bcrypt.hash(pass, salt);
-    // Insertion en base du joueur
-    let result = playerCollection.insertOne({
-      login: login,
-      score: 0,
-      totalScore: 0,
-      wins: 0,
-      looses: 0,
-      passwordHash: hashedPassword,
-      timeSpentInGame: 0
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const playerCollection = db.collection("players");
+    let user = await playerCollection.findOne({
+      login: login
     });
-    // Récupération du joueur inséré en base de données
-    return (await result).ops[0];
-  } else {
-    // Si l'utilisateur existe déjà dans la base de données, on vérifie que le mot de passe fourni correspond
-    // au hash du mot de passe stocké pour ce joueur
-    if (await bcrypt.compare(pass, user.passwordHash)) return user;
-    // Sinon on renvoie une message pour dire que le mot de passe ne correspond pas
-    else return "wrongPassword";
+    if (user === null) {
+      // Génération d'une clé de cryptage
+      var salt = await bcrypt.genSalt(2);
+      // Génération du hash du mot de passe
+      var hashedPassword = await bcrypt.hash(pass, salt);
+      // Insertion en base du joueur
+      let result = playerCollection.insertOne({
+        login: login,
+        score: 0,
+        totalScore: 0,
+        wins: 0,
+        looses: 0,
+        passwordHash: hashedPassword,
+        timeSpentInGame: 0
+      });
+      // Récupération du joueur inséré en base de données
+      return (await result).ops[0];
+    } else {
+      // Si l'utilisateur existe déjà dans la base de données, on vérifie que le mot de passe fourni correspond
+      // au hash du mot de passe stocké pour ce joueur
+      if (await bcrypt.compare(pass, user.passwordHash)) return user;
+      // Sinon on renvoie une message pour dire que le mot de passe ne correspond pas
+      else return "wrongPassword";
+    }
+  } catch (e) {
+    console.error(e);
+  } finally {
+    await client.close();
   }
 };
 // Récupération de tous les joueurs depuis la base de données
 const getPlayersFromDB = async () => {
-  const db = client.db(dbName);
-  const playerCollection = db.collection("players");
-  let users = await playerCollection.find().toArray();
-  return users;
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const playerCollection = db.collection("players");
+    let users = await playerCollection.find().toArray();
+    return users;
+  } catch (e) {
+    console.error(e);
+  } finally {
+    await client.close();
+  }
 };
 
 // Sauvegarde d'un joueur en base de données
 const savePlayer = async player => {
-  // On récupère la base de données
-  const db = client.db(dbName);
-  // On récupère la collection de joueurs
-  const playerCollection = db.collection("players");
-  // On remplace le joueur en base de données par celui mis à jour qui est passé dans la méthode
-  await playerCollection.replaceOne({ login: player.login }, player);
+  try {
+    await client.connect();
+    // On récupère la base de données
+    const db = client.db(dbName);
+    // On récupère la collection de joueurs
+    const playerCollection = db.collection("players");
+    // On remplace le joueur en base de données par celui mis à jour qui est passé dans la méthode
+    await playerCollection.replaceOne({
+      login: player.login
+    }, player);
+  } catch (e) {
+    console.error(e);
+  } finally {
+    await client.close();
+  }
 };
 
 // Code s'éxécutant à la connexion physique d'un utilisateur
@@ -356,12 +393,12 @@ function timeout(ms) {
 
 // Sur chaque changement du code on relance le serveur à l'aide du module reload
 reload(app)
-  .then(function() {
+  .then(function () {
     // On lance l'écoute sur le port 3000
-    http.listen(port, function() {
+    http.listen(port, function () {
       console.log(`listening on *:${port}`);
     });
   })
-  .catch(function(err) {
+  .catch(function (err) {
     console.error("Reload could not start, could not start server app", err);
   });
