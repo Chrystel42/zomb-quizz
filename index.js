@@ -48,12 +48,13 @@ const drop = async () => {
     console.log("Database dropped");
   } catch (e) {
     console.error(e);
-  } finally {}
+  }
 };
 
 // Initialisation de la base de données avec les questions à partir d'un fichier json
 const initDB = async () => {
   try {
+    await drop();
     await client.connect();
     const db = client.db(dbName);
     const questionCollection = db.collection("questions");
@@ -71,11 +72,9 @@ const initDB = async () => {
     console.log("questions loaded fron database")
   } catch (e) {
     console.error(e);
-  } finally {
-    await client.close();
   }
 };
-drop().then(initDB());
+initDB();
 
 
 
@@ -83,7 +82,6 @@ drop().then(initDB());
 // S'il n'existe pas, on l'insère dans la base avec des infos par défaut, son login et son mot de passe hashé
 const getPlayerFromDB = async (login, pass) => {
   try {
-    await client.connect();
     const db = client.db(dbName);
     const playerCollection = db.collection("players");
     let user = await playerCollection.findOne({
@@ -122,23 +120,18 @@ const getPlayerFromDB = async (login, pass) => {
 // Récupération de tous les joueurs depuis la base de données
 const getPlayersFromDB = async () => {
   try {
-    await client.connect();
     const db = client.db(dbName);
     const playerCollection = db.collection("players");
     let users = await playerCollection.find().toArray();
     return users;
   } catch (e) {
     console.error(e);
-  } finally {
-    await client.close();
-  }
+  } finally {}
 };
 
 // Sauvegarde d'un joueur en base de données
 const savePlayer = async player => {
   try {
-    await client.connect();
-    // On récupère la base de données
     const db = client.db(dbName);
     // On récupère la collection de joueurs
     const playerCollection = db.collection("players");
@@ -148,8 +141,6 @@ const savePlayer = async player => {
     }, player);
   } catch (e) {
     console.error(e);
-  } finally {
-    await client.close();
   }
 };
 
