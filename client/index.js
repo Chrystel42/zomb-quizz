@@ -1,5 +1,5 @@
 $(function() {
-  const socket = io();
+  const socket = io('https://zomb-quizz.herokuapp.com/');
 
   socket.on("waiting", () => {
     $(".voirScore").hide();
