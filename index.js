@@ -21,6 +21,7 @@ app.get("/", function (req, res) {
 
 // Définition de l'adresse de la base de données
 const mdpMongo = "celamesaoulebien"
+
 const mongoUrl = `mongodb+srv://Chrystel42:${mdpMongo}@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority`;
 const port = process.env.PORT || 3000;
 // Nom de la base de données
