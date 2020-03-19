@@ -20,7 +20,7 @@ app.get("/", function (req, res) {
 });
 
 // Définition de l'adresse de la base de données
-const mdpMongo = "celamesaoulebien"
+const mdpMongo = "bouliboy94"
 
 // Création d'un client pour la base de données
 const uri = `mongodb+srv://Chrystel42:${mdpMongo}@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority`;
