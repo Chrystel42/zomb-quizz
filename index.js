@@ -23,8 +23,8 @@ app.get("/", function(req, res) {
 const mongoUrl = process.env.MONGODB_URI
   ? process.env.MONGODB_URI
   : encodeURI("mongodb+srv://Chrystel42:Visha@182kb!87@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority");
-
-  const port=process.env.PORT ||3000;
+console.log(mongoUrl);
+const port=process.env.PORT ||3000;
 // Nom de la base de données
 const dbName = "quizzombie";
 // Création d'un client pour la base de données
@@ -44,7 +44,7 @@ const drop = async () => {
   await db.dropDatabase();
 };
 
-drop();
+//drop();
 
 // Initialisation de la base de données avec les questions à partir d'un fichier json
 const initDB = async () => {
