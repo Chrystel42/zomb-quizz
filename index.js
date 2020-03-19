@@ -28,7 +28,11 @@ const client = new MongoClient(uri, {
   useNewUrlParser: true
 });
 
-client.connect(err => {
+client.connect(async err => {
+  if (err) {
+    console.log(err);
+    return;
+  }
   databasesList = await client.db().admin().listDatabases();
   console.log("Databases:");
   databasesList.databases.forEach(db => console.log(` - ${db.name}`));
