@@ -20,7 +20,7 @@ app.get("/", function (req, res) {
 });
 
 // Définition de l'adresse de la base de données
-const mdpMongo = "Visha@182kb!87"
+const mdpMongo = "Visha%40182kb%2187"
 const mongoUrl = `mongodb+srv://Chrystel42:${mdpMongo}@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority`;
 console.log(mongoUrl);
 const port = process.env.PORT || 3000;
