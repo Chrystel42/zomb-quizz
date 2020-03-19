@@ -20,9 +20,7 @@ app.get("/", function(req, res) {
 });
 
 // Définition de l'adresse de la base de données
-const mongoUrl = process.env.MONGODB_URI
-  ? process.env.MONGODB_URI
-  : encodeURI("mongodb+srv://Chrystel42:Visha@182kb!87@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority");
+const mongoUrl = "mongodb+srv://Chrystel42:"+ encodeURI("Visha@182kb!87") + "@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority";
 console.log(mongoUrl);
 const port=process.env.PORT ||3000;
 // Nom de la base de données
