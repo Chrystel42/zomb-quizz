@@ -20,9 +20,8 @@ app.get("/", function (req, res) {
 });
 
 // Définition de l'adresse de la base de données
-const mdpMongo = "Visha%40182kb%2187"
+const mdpMongo = "celamesaoulebien"
 const mongoUrl = `mongodb+srv://Chrystel42:${mdpMongo}@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority`;
-console.log(mongoUrl);
 const port = process.env.PORT || 3000;
 // Nom de la base de données
 const dbName = "quizzombie";
@@ -56,8 +55,6 @@ const drop = async () => {
   }
 };
 
-drop();
-
 // Initialisation de la base de données avec les questions à partir d'un fichier json
 const initDB = async () => {
   try {
@@ -82,7 +79,7 @@ const initDB = async () => {
     await client.close();
   }
 };
-initDB();
+drop().then(initDB());
 
 
 
