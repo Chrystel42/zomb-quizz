@@ -22,15 +22,23 @@ app.get("/", function (req, res) {
 // Définition de l'adresse de la base de données
 const mdpMongo = "celamesaoulebien"
 
-const mongoUrl = `mongodb+srv://Chrystel42:${mdpMongo}@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority`;
+// Création d'un client pour la base de données
+const uri = `mongodb+srv://Chrystel42:${mdpMongo}@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority`;
+const client = new MongoClient(uri, {
+  useNewUrlParser: true
+});
+
+client.connect(err => {
+  databasesList = await client.db().admin().listDatabases();
+  console.log("Databases:");
+  databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+  client.close();
+});
+
 const port = process.env.PORT || 3000;
 // Nom de la base de données
 const dbName = "quizzombie";
-// Création d'un client pour la base de données
-let client = new MongoClient(mongoUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+
 
 const manchesGagnantes = 10;
 let players = {};
@@ -41,11 +49,6 @@ let questions = [];
 const drop = async () => {
   try {
     await client.connect();
-
-    databasesList = await client.db().admin().listDatabases();
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-
     const db = client.db(dbName);
     await db.dropDatabase();
     console.log("Database dropped");
