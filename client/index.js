@@ -1,5 +1,5 @@
-$(function() {
-  const socket = io('https://zomb-quizz.herokuapp.com/');
+$(function () {
+  const socket = io();
 
   socket.on("waiting", () => {
     $(".voirScore").hide();
@@ -92,12 +92,12 @@ $(function() {
   socket.on("answer", (answer, wrong) => {
     if (wrong)
       $(`#reponse${answer + 1}`)
-        .parent()
-        .css("background-color", "red");
+      .parent()
+      .css("background-color", "red");
     else
       $(`#reponse${answer + 1}`)
-        .parent()
-        .css("background-color", "yellow");
+      .parent()
+      .css("background-color", "yellow");
   });
 
   socket.on("timer", timeLeft => {

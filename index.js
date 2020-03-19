@@ -23,20 +23,10 @@ app.get("/", function (req, res) {
 const mdpMongo = "bouliboy94"
 
 // Création d'un client pour la base de données
-const uri = `mongodb+srv://Chrystel42:${mdpMongo}@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://MyNewSuperUser:MyNewSuperUser94@zomb-quizz-cuzcs.mongodb.net/test?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
-  useNewUrlParser: true
-});
-
-client.connect(async err => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  databasesList = await client.db().admin().listDatabases();
-  console.log("Databases:");
-  databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-  client.close();
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 const port = process.env.PORT || 3000;
@@ -58,9 +48,7 @@ const drop = async () => {
     console.log("Database dropped");
   } catch (e) {
     console.error(e);
-  } finally {
-    await client.close();
-  }
+  } finally {}
 };
 
 // Initialisation de la base de données avec les questions à partir d'un fichier json
