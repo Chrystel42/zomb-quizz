@@ -254,7 +254,7 @@
   },
 
   {
-    "question": "Dans quelle ville se déroule le film '28 jours plus tard' ?",
+    "question": "Dans quelle ville se déroule le film '28 semaines plus tard' ?",
     "possibleAnswers": [
       "Berlin",
       "Paris",
@@ -268,7 +268,7 @@
     "question": "Dans 'Shaun of the Dead', comment s'appelle le bar où Shaun et ses amis se réfugient ?",
     "possibleAnswers": [
       "Red Lion",
-      "Winschester",
+      "Winchester",
       "The World's End",
       "The Dev's"
     ],
