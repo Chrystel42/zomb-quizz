@@ -32,6 +32,7 @@ body {
 #resultat {
   width: 100%;
 }
+
 #regleDuJeu span {
   font-size: 24px;
   color: rgb(72, 197, 72);
@@ -210,6 +211,7 @@ body {
   margin-top: 7%;
   margin-bottom: 7%;
 }
+
 #scoreNumb1,
 #winLooseNumb1,
 #totalScoreNumb1,
@@ -221,7 +223,8 @@ body {
 }
 
 /* Pseudo */
-#nickname, #pseudo {
+#nickname,
+#pseudo {
   display: flex;
   position: absolute;
   margin: auto;
@@ -430,4 +433,23 @@ thead {
 
 th {
   padding: 10px 30px;
+}
+
+@media screen and (max-width:1400px) {
+  #title {
+    height: 125px;
+    font-size: 103px;
+  }
+
+  .voirScore button {
+    margin-bottom: 2px;
+  }
+
+  #regleDuJeu {
+    height: 232px;
+  }
+
+  #game-area {
+    height: 469px;
+  }
 }
