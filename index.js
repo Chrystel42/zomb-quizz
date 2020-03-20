@@ -54,7 +54,7 @@ const drop = async () => {
 // Initialisation de la base de données avec les questions à partir d'un fichier json
 const initDB = async () => {
   try {
-    // await drop();
+    await drop();
     await client.connect();
     const db = client.db(dbName);
     const questionCollection = db.collection("questions");
