@@ -260,7 +260,6 @@ body {
 }
 
 #pass {
-  background-color: #3b8610;
   font-size: 18px;
 }
 
@@ -435,7 +434,7 @@ th {
   padding: 10px 30px;
 }
 
-@media screen and (max-width:1400px) {
+@media screen and (max-width: 1400px) {
   #title {
     height: 125px;
     font-size: 103px;
