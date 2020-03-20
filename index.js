@@ -34,7 +34,7 @@ const port = process.env.PORT || 3000;
 const dbName = "quizzombie";
 
 
-const manchesGagnantes = 10;
+const manchesGagnantes = 20;
 let players = {};
 let sockets = {};
 let questions = [];
@@ -288,7 +288,7 @@ const runGame = async () => {
       })
     );
     // Défilement des 5 secondes avec un envoi du temps restant à chaque tour de boucle
-    let secondesRestantes = 5;
+    let secondesRestantes = 10;
     do {
       Object.values(sockets).map(s => s.emit("timer", secondesRestantes));
       await timeout(1000);
