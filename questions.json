@@ -1,5 +1,4 @@
-[
-  {
+[{
     "question": "En quelle année est sorti le premier épisode de 'The Walking Dead' ?",
     "possibleAnswers": ["2010", "2007", "2014", "1980"],
     "answer": 0
@@ -270,7 +269,7 @@
     "possibleAnswers": [
       "Red Lion",
       "Winschester",
-      "The Word's End",
+      "The World's End",
       "The Dev's"
     ],
     "answer": 1

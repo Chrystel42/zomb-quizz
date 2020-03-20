@@ -1,138 +1,112 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="/jquery/jquery.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/reload/reload.js"></script>
-    <script src="index.js"></script>
-    <link
-      rel="stylesheet"
-      href="css/style.css"
-      type="text/css"
-      media="screen"
-    />
-    <!-- Liens des fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Modak&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Bowlby+One+SC&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Paytone+One&display=swap"
-      rel="stylesheet"
-    />
-    <title>Jeu multi-joueur</title>
-  </head>
-  <body>
-    <p id="title">ZOMB'QUIZZ</p>
-    <p class="voirScore">
-      <button id="btn-scores">Voir le score des autres joueurs</button>
-    </p>
-    <div id="resultat">
-      <p id="resultat-text"></p>
-      <button id="retry-btn">Recommencer ?</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="/jquery/jquery.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/reload/reload.js"></script>
+  <script src="index.js"></script>
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+  <!-- Liens des fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Modak&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Paytone+One&display=swap" rel="stylesheet" />
+  <title>Jeu multi-joueur</title>
+</head>
+
+<body>
+  <p id="title">ZOMB'QUIZZ</p>
+  <p class="voirScore">
+    <button id="btn-scores">Voir le score des autres joueurs</button>
+  </p>
+  <div id="resultat">
+    <p id="resultat-text"></p>
+    <button id="retry-btn">Recommencer ?</button>
+  </div>
+  <div id="welcome">
+    <div id="regleDuJeu">
+      <p><span>Bienvenue sur mon jeu !</span></p>
+      <p>
+        Le but est de répondre à 20 questions sur l'univers des ZOMBIES face à
+        votre adversaire!
+      </p>
+      <p>Parmis les 4 réponses suggérées, une seule sera la bonne.</p>
+      <p>Mais attention, vous n'aurez que 10 secondes pour vous décidez!</p>
     </div>
-    <div id="welcome">
-      <div id="regleDuJeu">
-        <p><span>Bienvenue sur mon jeu !</span></p>
-        <p>
-          Le but est de répondre à 10 questions sur l'univers des ZOMBIES face à
-          votre adversaire!
-        </p>
-        <p>Parmis les 4 réponses suggérées, une seule sera la bonne.</p>
-        <p>Mais attention, vous n'aurez que 5 secondes pour vous décidez!</p>
-      </div>
-      <!-- Les formulaires de connexion -->
-      <form method="post" id="pseudo">
-        <div id="nickname">
-          <p id="enterName">Entrez votre pseudo</p>
-          <div id="nomRentre">
-            <input
-              id="pseudonyme"
-              minlength="3"
-              maxlength="10"
-              required
-              aria-required="true"
-            />
-          </div>
-          <div id="motDePass">
-            <p id="mdp">Mot de Passe :</p>
-            <input
-              type="password"
-              id="pass"
-              name="password"
-              minlength="6"
-              required
-            />
-          </div>
-          <button id="validez" type="submit">VALIDEZ !</button>
-          <p id="loginMessage"></p>
+    <!-- Les formulaires de connexion -->
+    <form method="post" id="pseudo">
+      <div id="nickname">
+        <p id="enterName">Entrez votre pseudo</p>
+        <div id="nomRentre">
+          <input id="pseudonyme" minlength="3" maxlength="10" required aria-required="true" />
         </div>
-      </form>
-    </div>
-    <p id="waiting">En attente d'un second joueur...</p>
-    <p id="enCours">Partie en cours, veuillez patientez...</p>
-    <div id="gameContainer">
-      <div id="game-area">
-        <div class="questions">
-          <span id="question"></span>
+        <div id="motDePass">
+          <p id="mdp">Mot de Passe :</p>
+          <input type="password" id="pass" name="password" minlength="6" required />
         </div>
-        <div id="reponses">
-          <button class="reponse"><span id="reponse1"></span></button>
-          <button class="reponse"><span id="reponse2"></span></button>
-          <button class="reponse"><span id="reponse3"></span></button>
-          <button class="reponse"><span id="reponse4"></span></button>
-        </div>
-        <div class="minuteur"><span id="minuteurValeur"></span></div>
+        <button id="validez" type="submit">VALIDEZ !</button>
+        <p id="loginMessage"></p>
       </div>
-      <div id="player-one">
-        <img id="joueur1" src="images/avatar1.png" alt="avatar" />
-        <h2 id="h2Joueur1"></h2>
-        <div id="scoreNumb1"></div>
-        <div id="totalScoreNumb1"></div>
-        <div id="winLooseNumb1"></div>
+    </form>
+  </div>
+  <p id="waiting">En attente d'un second joueur...</p>
+  <p id="enCours">Partie en cours, veuillez patientez...</p>
+  <div id="gameContainer">
+    <div id="game-area">
+      <div class="questions">
+        <span id="question"></span>
       </div>
-      <div id="player-two">
-        <img id="joueur2" src="images/avatar2.png" alt="avatar" />
-        <h2 id="h2Joueur2"></h2>
-        <div id="scoreNumb2"></div>
-        <div id="totalScoreNumb2"></div>
-        <div id="winLooseNumb2"></div>
+      <div id="reponses">
+        <button class="reponse"><span id="reponse1"></span></button>
+        <button class="reponse"><span id="reponse2"></span></button>
+        <button class="reponse"><span id="reponse3"></span></button>
+        <button class="reponse"><span id="reponse4"></span></button>
       </div>
+      <div class="minuteur"><span id="minuteurValeur"></span></div>
     </div>
-    <div id="performances">
-      <div id="autreScores">
-        <p>VOICI LE SCORE DES JOUEURS :</p>
-        <table style="color: whitesmoke;">
-          <thead>
-            <tr>
-              <th>Pseudo</th>
-              <th>Réponses trouvées</th>
-              <th>Matchs gagnés</th>
-              <th>Matchs perdus</th>
-              <th>Temps de jeu</th>
-            </tr>
-          </thead>
-          <tbody id="perf-tab-body">
-            <tr>
-              <td>Toto</td>
-              <td>69</td>
-              <td>666</td>
-              <td>669</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div id="player-one">
+      <img id="joueur1" src="images/avatar1.png" alt="avatar" />
+      <h2 id="h2Joueur1"></h2>
+      <div id="scoreNumb1"></div>
+      <div id="totalScoreNumb1"></div>
+      <div id="winLooseNumb1"></div>
     </div>
-  </body>
+    <div id="player-two">
+      <img id="joueur2" src="images/avatar2.png" alt="avatar" />
+      <h2 id="h2Joueur2"></h2>
+      <div id="scoreNumb2"></div>
+      <div id="totalScoreNumb2"></div>
+      <div id="winLooseNumb2"></div>
+    </div>
+  </div>
+  <div id="performances">
+    <div id="autreScores">
+      <p>VOICI LE SCORE DES JOUEURS :</p>
+      <table style="color: whitesmoke;">
+        <thead>
+          <tr>
+            <th>Pseudo</th>
+            <th>Réponses trouvées</th>
+            <th>Matchs gagnés</th>
+            <th>Matchs perdus</th>
+            <th>Temps de jeu</th>
+          </tr>
+        </thead>
+        <tbody id="perf-tab-body">
+          <tr>
+            <td>Toto</td>
+            <td>69</td>
+            <td>666</td>
+            <td>669</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
 </html>
