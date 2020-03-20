@@ -40,16 +40,16 @@ let sockets = {};
 let questions = [];
 
 // Suppression de la base de données lors du chagement de l'application
-// const drop = async () => {
-//   try {
-//     await client.connect();
-//     const db = client.db(dbName);
-//     await db.dropDatabase();
-//     console.log("Database dropped");
-//   } catch (e) {
-//     console.error(e);
-//   }
-// };
+const drop = async () => {
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    await db.dropDatabase();
+    console.log("Database dropped");
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 // Initialisation de la base de données avec les questions à partir d'un fichier json
 const initDB = async () => {
