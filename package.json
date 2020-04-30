@@ -15,7 +15,7 @@
   "dependencies": {
     "bcrypt": "^4.0.1",
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mongodb": "^3.5.5",
     "nodemon": "^2.0.2",
     "reload": "^3.0.4",
